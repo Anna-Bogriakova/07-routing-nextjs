@@ -12,11 +12,7 @@ interface NoteListProps {
 export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
-  const { mutate: deleteNoteMutate, isPending } = useMutation<
-    Note,
-    Error,
-    string
-  >({
+  const { mutate: deleteNoteMutate, isPending } = useMutation<Note, Error, string>({
     mutationFn: deleteNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
@@ -27,7 +23,7 @@ export default function NoteList({ notes }: NoteListProps) {
 
   return (
     <ul className={css.list}>
-      {notes.map((note) => (
+      {notes.map(note => (
         <li key={note.id} className={css.listItem}>
           <h2 className={css.title}>{note.title}</h2>
           <p className={css.content}>{note.content}</p>
@@ -39,9 +35,9 @@ export default function NoteList({ notes }: NoteListProps) {
             <button
               className={css.button}
               onClick={() => deleteNoteMutate(note.id)}
-              disabled={isPending}
+      disabled={isPending}
             >
-              Delete
+     Delete
             </button>
           </div>
         </li>

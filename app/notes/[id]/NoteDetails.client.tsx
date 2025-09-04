@@ -9,14 +9,10 @@ export default function NoteDetailsClient() {
   const params = useParams();
   const id = params?.id;
 
-  const {
-    data: note,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: note, isLoading, isError } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(String(id)),
-    enabled: !!id,
+    enabled: !!id, 
     refetchOnMount: false,
   });
 

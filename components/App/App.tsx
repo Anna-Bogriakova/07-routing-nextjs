@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery,  } from "@tanstack/react-query";
 
 import Loader from "../Loader/Loader";
 import NoteList from "../NoteList/NoteList";
@@ -57,12 +57,14 @@ export default function App() {
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
 
-      {!isLoading && !isError && <NoteList notes={data?.notes ?? []} />}
-      {isModalOpen && (
-        <Modal onClose={() => setModalOpen(false)}>
-          <NoteForm onCancel={() => setModalOpen(false)} />
-        </Modal>
-      )}
+     {!isLoading && !isError && (
+  <NoteList notes={data?.notes ?? []} />
+)}
+     {isModalOpen && (
+  <Modal onClose={() => setModalOpen(false)}>
+    <NoteForm onCancel={() => setModalOpen(false)} />
+  </Modal>
+)}
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { useState } from "react";
-import css from "./SearchBox.module.css";
+import { useState } from 'react';
+import css from './SearchBox.module.css'
 
-interface SearchBoxProps {
+interface SearchBoxProps{
   onChange: (value: string) => void;
 }
 export default function SearchBox({ onChange }: SearchBoxProps) {
@@ -11,15 +11,16 @@ export default function SearchBox({ onChange }: SearchBoxProps) {
     const val = e.target.value;
     setValue(val);
     onChange(val);
-  };
+  }
 
-  return (
-    <input
+   return (
+  <input
       className={css.input}
       type="text"
       placeholder="Search notes"
       value={value}
       onChange={handleChange}
     />
+
   );
 }
