@@ -12,7 +12,7 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-const NoteDetails = async ({ params }: Props) => {
+export default async function NoteDetails({ params }: Props) {
   const { id } = await params;
 
   const queryClient = new QueryClient();
@@ -28,6 +28,6 @@ const NoteDetails = async ({ params }: Props) => {
       <NoteDetailsClient />
     </HydrationBoundary>
   );
-};
+}
 
 export default NoteDetails;
